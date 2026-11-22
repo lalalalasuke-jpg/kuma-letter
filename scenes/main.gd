@@ -242,7 +242,7 @@ func build_ui() -> void:
 	choice_box.position = Vector2(16, BG_Y + BG_H + 312)
 	choice_box.size = Vector2(W - 32, 0)
 	choice_box.add_theme_constant_override("h_separation", 10)
-	choice_box.add_theme_constant_override("v_separation", 8)
+	choice_box.add_theme_constant_override("v_separation", 6)
 	add_child(choice_box)
 
 	overlay = Control.new()
@@ -315,7 +315,7 @@ func show_choices(opts: Array) -> void:
 	var bw := (W - 32 - 10) / 2.0 if choice_box.columns == 2 else W - 32.0
 	for o in opts:
 		var b := button(o.text, 25)
-		b.custom_minimum_size = Vector2(bw, 64 if opts.size() <= 5 else 70)
+		b.custom_minimum_size = Vector2(bw, 60 if opts.size() <= 5 else 70)
 		if visited.has(o.to):  # もう見た選択肢は少しうすく
 			b.add_theme_color_override("font_color", Color("9a8a7c"))
 		b.pressed.connect(func(): choose(o.to))
