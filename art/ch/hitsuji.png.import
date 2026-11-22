@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1mkvrgyx4q75"
-path="res://.godot/imported/park_rain.jpg-7320d5c126643d53d578403e98df167e.ctex"
+uid="uid://crhen24n8t1r2"
+path="res://.godot/imported/hitsuji.png-2a844ea8519276c201e6cba9bcd1fa1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/bg/park_rain.jpg"
-dest_files=["res://.godot/imported/park_rain.jpg-7320d5c126643d53d578403e98df167e.ctex"]
+source_file="res://art/ch/hitsuji.png"
+dest_files=["res://.godot/imported/hitsuji.png-2a844ea8519276c201e6cba9bcd1fa1f.ctex"]
 
 [params]
 

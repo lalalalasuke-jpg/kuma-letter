@@ -9,6 +9,8 @@ const SHOTS := [
 	["tanuki", ["talk_tanuki", 3]],
 	["rain", ["stay", 9]],
 	["good", ["good", 4]],
+	["cafe", ["cafe", 2]],
+	["park", ["good", 0]],
 ]
 
 

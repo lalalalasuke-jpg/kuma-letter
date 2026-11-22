@@ -201,7 +201,7 @@
 
 *cafe
 @bg cafe
-@ch kuma
+@ch kuma hitsuji
 @if c_master -> cafe2
 くまは、お店の向かいの喫茶店でひと休みすることにした。
 マスター「いらっしゃい。いつもの紅茶かな」

@@ -20,7 +20,7 @@ const PLACE := {"home": "くまの家", "outside": "カードショップ", "ori
 	"shop": "カードショップ", "register": "カードショップ", "showcase": "カードショップ",
 	"cafe": "喫茶店", "park": "公園", "park_rain": "公園"}
 
-const NO_FLIP := ["fukurou"]  # 左に置いても反転しない立ち絵（正面向き・文字入りの仮の絵）
+const NO_FLIP := []  # 左に置いても反転しない立ち絵の名前（正面向きの絵など）
 static var save_path := SAVE  # テスト用に差し替えられるように
 
 var ops: Array = []          # 台本を1行ずつにしたもの
