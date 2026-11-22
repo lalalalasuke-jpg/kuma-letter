@@ -269,9 +269,10 @@
 @end azuke
 
 *good
-@bg park
-@ch fukurou
+@bg park_bench
+@ch -
 夕方の公園。ベンチで、ふくろうのおじいさんが本を読んでいる。
+@bg park
 @ch kuma fukurou
 くま「あの……『夜の森の王』さん、でいらっしゃいますかな」
 ふくろう「……ほう。その呼び名を聞くのは、何十年ぶりかな」

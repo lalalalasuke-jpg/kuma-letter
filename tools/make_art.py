@@ -11,7 +11,7 @@ from lib4koma import cutout  # noqa: E402
 OUT = os.path.join(os.path.dirname(__file__), "..", "art")
 BG = {"home": "kuma_room.jpg", "shop": "shop_playspace.png", "oripa": "shop_oripa.png",
       "register": "shop_register.jpg", "outside": "shop_outside.jpg", "showcase": "shop_showcase.jpg",
-      "cafe": "cafe_inside.jpg", "park": "park_evening.jpg"}
+      "cafe": "cafe_inside.jpg", "park": "park_evening.jpg", "park_bench": "park_bench_fukurou.jpg"}
 CH = {
     "kuma": "kuma_base", "kuma_pokan": "kuma_pokan", "kuma_unazuki": "kuma_unazuki",
     "kuma_tere": "kuma_tere", "kuma_kandou": "kuma_kandou", "kuma_udegumi": "kuma_udegumi",

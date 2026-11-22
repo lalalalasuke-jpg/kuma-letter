@@ -11,6 +11,7 @@ const SHOTS := [
 	["good", ["good", 4]],
 	["cafe", ["cafe", 2]],
 	["park", ["good", 0]],
+	["park2", ["good", 2]],
 ]
 
 
