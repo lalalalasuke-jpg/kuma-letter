@@ -48,6 +48,8 @@ func _initialize() -> void:
 			for n in op.a.split(" ", false):
 				if not ResourceLoader.exists("res://art/ch/%s.png" % n):
 					bad("立ち絵がない: " + n)
+		if op.t == "cmd" and op.c == "se" and not ResourceLoader.exists("res://sfx/%s.wav" % op.a):
+			bad("効果音がない: " + op.a)
 		if op.t == "say" and not Tr.has_en(op.text):
 			bad("英訳がない: " + op.text)
 		if op.t == "say" and op.who != "" and not Tr.has_en(op.who):

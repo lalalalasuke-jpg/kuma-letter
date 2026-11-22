@@ -47,11 +47,27 @@ var choice_box: GridContainer
 var overlay: Control
 var menu_btn: Button
 
+# ---- 音（効果音 sfx/・BGM bgm/。tools/make_sounds.py で作ったもの）
+const VOICE := {"ららすけ": 0.72, "うさぎ": 1.35, "たぬき": 1.18, "きつね": 1.02, "ふくろう": 0.58,
+	"ポン吉": 0.66, "マスター": 0.85, "テレビ": 1.25, "？？？": 0.95}  # 文字の音の高さ（話す人ごと）
+var sound_on := true
+var sound_btn: Button
+var sfx_players: Array = []
+var sfx_next := 0
+var sfx_cache := {}
+var bgm_player: AudioStreamPlayer
+var amb_player: AudioStreamPlayer
+var bgm_name := ""
+var amb_on := false
+var blip_pitch := 0.0
+var last_chars := 0
+
 
 func _ready() -> void:
 	load_save()
 	parse_story()
 	build_ui()
+	setup_audio()
 	show_title()
 
 
@@ -146,6 +162,7 @@ func step() -> void:
 					"bg": set_bg(a)
 					"ch": set_chars(a)
 					"set": flags[a] = 1
+					"se": sfx(a)
 					"add": flags[a] = int(flags.get(a, 0)) + 1
 					"goto":
 						jump(a)
@@ -201,6 +218,11 @@ func build_ui() -> void:
 	menu_btn.size = Vector2(150, 52)
 	menu_btn.pressed.connect(show_title)
 	add_child(menu_btn)
+	sound_btn = button("♪", 26)
+	sound_btn.position = Vector2(W - 240, 14)
+	sound_btn.size = Vector2(56, 52)
+	sound_btn.pressed.connect(toggle_sound)
+	add_child(sound_btn)
 
 	var stage := Control.new()
 	stage.position = Vector2(0, BG_Y)
@@ -262,6 +284,13 @@ func set_bg(a: String) -> void:
 	rain.visible = a.contains("rain")  # rain: 雨を降らせて暗く（外の絵で使う）
 	var dark := a.contains("rain") or a.contains("dark")  # dark: 暗くするだけ（雨の日の店内）
 	bg_rect.modulate = Color(0.62, 0.66, 0.78) if dark else Color.WHITE
+	if dark:  # 雨の日は音楽を止めて雨の音だけ
+		play_bgm("")
+	elif name.begins_with("park"):
+		play_bgm("evening")
+	else:
+		play_bgm("day")
+	set_amb(dark)
 
 
 func set_chars(a: String) -> void:
@@ -291,6 +320,8 @@ func set_chars(a: String) -> void:
 func show_line(who: String, text: String) -> void:
 	mode = "say"
 	name_label.text = Tr.t(who)
+	blip_pitch = VOICE.get(who, 0.0)  # 地の文は音なし
+	last_chars = 0
 	text_label.text = Tr.t(text).replace("\\n", "\n")  # 台本の \n で改行
 	text_label.visible_characters = 0
 	next_mark.hide()
@@ -356,6 +387,8 @@ func cover(col: Color) -> Control:
 
 func show_title() -> void:
 	mode = "title"
+	play_bgm("day")
+	set_amb(false)
 	text_panel.hide()
 	if tw:
 		tw.kill()
@@ -397,6 +430,13 @@ func show_title() -> void:
 	lb.size = Vector2(180, 60)
 	lb.pressed.connect(toggle_lang)
 	overlay.add_child(lb)
+	var sb := button(sound_text(), 24)  # 音のオン・オフ（左下）
+	sb.position = Vector2(20, 1280 - 80)
+	sb.size = Vector2(180, 60)
+	sb.pressed.connect(func():
+		toggle_sound()
+		sb.text = sound_text())
+	overlay.add_child(sb)
 
 
 func toggle_lang() -> void:
@@ -427,6 +467,9 @@ func show_ending(id: String) -> void:
 	var e: Array = EPILOGUE if epi else ENDINGS.filter(func(x): return x[0] == id)[0]
 	if is_inside_tree():
 		await get_tree().create_timer(0.4).timeout
+	play_bgm("")
+	set_amb(false)
+	sfx("jingle")
 	cover(Color(0.2, 0.15, 0.1, 0.94))
 	var quote := "「%s」" if Tr.lang == "ja" else "\"%s\""
 	var t := label((Tr.t("おしまい") if epi else "END") + "\n" + quote % Tr.t(e[1]), 52 if Tr.lang == "ja" else 44, Color.WHITE)
@@ -507,12 +550,14 @@ func load_save() -> void:
 		for k in c.get_value("endings", "seen", []):
 			seen[k] = true
 		Tr.lang = c.get_value("settings", "lang", Tr.lang)
+		sound_on = c.get_value("settings", "sound", true)
 
 
 func write_save() -> void:
 	var c := ConfigFile.new()
 	c.set_value("endings", "seen", seen.keys())
 	c.set_value("settings", "lang", Tr.lang)
+	c.set_value("settings", "sound", sound_on)
 	c.save(save_path)
 
 
@@ -529,6 +574,7 @@ func label(s: String, size: int, col: Color) -> Label:
 func button(s: String, size: int) -> Button:
 	var b := Button.new()
 	b.text = Tr.t(s)
+	b.pressed.connect(func(): sfx("click"))
 	b.add_theme_font_size_override("font_size", size)
 	b.add_theme_color_override("font_color", Color("3a2a20"))
 	b.add_theme_color_override("font_hover_color", Color("3a2a20"))
@@ -571,3 +617,86 @@ class Rain extends Control:
 	func _draw() -> void:
 		for d in drops:
 			draw_line(d, d + Vector2(-6, 34), Color(0.85, 0.9, 1.0, 0.55), 2.0)
+
+
+# ---------------------------------------------------------------- 音
+func setup_audio() -> void:
+	for i in 4:
+		var p := AudioStreamPlayer.new()
+		add_child(p)
+		sfx_players.append(p)
+	bgm_player = AudioStreamPlayer.new()
+	bgm_player.volume_db = -7.0
+	add_child(bgm_player)
+	amb_player = AudioStreamPlayer.new()
+	amb_player.volume_db = -4.0
+	amb_player.stream = load("res://bgm/rain.wav")
+	add_child(amb_player)
+	update_sound_btn()
+
+
+func sfx(name: String, pitch := 1.0) -> void:
+	if not sound_on or sfx_players.is_empty():
+		return
+	var path := "res://sfx/%s.wav" % name
+	if not sfx_cache.has(path):
+		sfx_cache[path] = load(path)
+	var p: AudioStreamPlayer = sfx_players[sfx_next]
+	sfx_next = (sfx_next + 1) % sfx_players.size()
+	p.stream = sfx_cache[path]
+	p.pitch_scale = pitch
+	p.volume_db = -9.0 if name == "blip" else 0.0
+	p.play()
+
+
+func play_bgm(name: String) -> void:
+	if bgm_player == null or name == bgm_name:
+		return
+	bgm_name = name
+	if name == "":
+		bgm_player.stop()
+		return
+	bgm_player.stream = load("res://bgm/%s.wav" % name)
+	if sound_on:
+		bgm_player.play()
+
+
+func set_amb(on: bool) -> void:
+	if amb_player == null:
+		return
+	amb_on = on
+	if on and sound_on and not amb_player.playing:
+		amb_player.play()
+	elif not on:
+		amb_player.stop()
+
+
+func toggle_sound() -> void:
+	sound_on = not sound_on
+	if sound_on:
+		if bgm_name != "":
+			bgm_player.play()
+		if amb_on:
+			amb_player.play()
+		sfx("click")
+	else:
+		bgm_player.stop()
+		amb_player.stop()
+	update_sound_btn()
+	write_save()
+
+
+func sound_text() -> String:
+	return "♪ ON" if sound_on else "♪ OFF"
+
+
+func update_sound_btn() -> void:
+	if sound_btn:
+		sound_btn.modulate = Color.WHITE if sound_on else Color(1, 1, 1, 0.45)
+
+
+func _process(_d: float) -> void:
+	# 文字が2つ出るごとに、話す人の高さで「ぽ」
+	if typing and blip_pitch > 0.0 and text_label.visible_characters >= last_chars + 2:
+		last_chars = text_label.visible_characters
+		sfx("blip", blip_pitch * randf_range(0.96, 1.04))
