@@ -53,7 +53,7 @@ const UI := {
 	"あそんでくれて、ありがとうございました": "Thank you for playing!",
 	"おしまい": "The End",
 	# 場所
-	"くまの家": "Lalasuke's Home", "カードショップ": "Card Shop", "喫茶店": "Cafe", "公園": "Park",
+	"ららすけの家": "Lalasuke's Home", "カードショップ": "Card Shop", "喫茶店": "Cafe", "公園": "Park",
 	# エンディング
 	"届いた手紙": "The Letter Delivered",
 	"手がかりを集めて、ふくろうのおじいさんに手紙を届けた": "You gathered clues and delivered the letter to old Mr. Owl.",

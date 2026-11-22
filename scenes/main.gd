@@ -18,7 +18,7 @@ const ENDINGS := [
 	["rain", "雨宿りの約束", "雨の日のお店で、あの日の続きが始まった"],
 ]
 const EPILOGUE := ["epilogue", "後日談", "いつものお店に、新しい「いつもの」が増えた"]
-const PLACE := {"home": "くまの家", "outside": "カードショップ", "oripa": "カードショップ",
+const PLACE := {"home": "ららすけの家", "outside": "カードショップ", "oripa": "カードショップ",
 	"shop": "カードショップ", "register": "カードショップ", "showcase": "カードショップ",
 	"cafe": "喫茶店", "park": "公園", "park_bench": "公園", "park_rain": "公園"}
 
