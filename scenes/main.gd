@@ -17,6 +17,7 @@ const ENDINGS := [
 	["numa", "紳士、沼にはまる", "占いの1位を信じて、オリパを引きつづけた"],
 	["rain", "雨宿りの約束", "雨の日のお店で、あの日の続きが始まった"],
 ]
+const EPILOGUE := ["epilogue", "後日談", "いつものお店に、新しい「いつもの」が増えた"]
 const PLACE := {"home": "くまの家", "outside": "カードショップ", "oripa": "カードショップ",
 	"shop": "カードショップ", "register": "カードショップ", "showcase": "カードショップ",
 	"cafe": "喫茶店", "park": "公園", "park_bench": "公園", "park_rain": "公園"}
@@ -377,7 +378,10 @@ func show_title() -> void:
 	t.size = Vector2(W, 180)
 	overlay.add_child(t)
 	var y := BG_H + 280
-	for item in [["はじめから", start_game], ["エンディング図鑑（%d/%d）" % [seen.size(), ENDINGS.size()], show_gallery]]:
+	var items := [["はじめから", start_game], ["エンディング図鑑（%d/%d）" % [seen.size(), ENDINGS.size()], show_gallery]]
+	if all_seen():  # 全部見たら後日談がひらく
+		items.append(["おまけ：後日談", start_epilogue])
+	for item in items:
 		var b := button(item[0], 30)
 		b.position = Vector2(120, y)
 		b.size = Vector2(W - 240, 90)
@@ -386,17 +390,30 @@ func show_title() -> void:
 		y += 120
 
 
+func all_seen() -> bool:
+	return ENDINGS.all(func(x): return seen.has(x[0]))
+
+
+func start_epilogue() -> void:
+	start_game()
+	jump("epilogue")
+	step()
+
+
 func show_ending(id: String) -> void:
 	mode = "ending"
-	var first := not seen.has(id)
-	seen[id] = true
-	write_save()
+	var epi := id == "epilogue"  # 後日談は図鑑には入れない
+	var first := false
+	if not epi:
+		first = not seen.has(id)
+		seen[id] = true
+		write_save()
 	text_panel.hide()
-	var e: Array = ENDINGS.filter(func(x): return x[0] == id)[0]
+	var e: Array = EPILOGUE if epi else ENDINGS.filter(func(x): return x[0] == id)[0]
 	if is_inside_tree():
 		await get_tree().create_timer(0.4).timeout
 	cover(Color(0.2, 0.15, 0.1, 0.94))
-	var t := label("END\n「%s」" % Tr.t(e[1]), 52, Color.WHITE)
+	var t := label(("おしまい" if epi else "END") + "\n「%s」" % Tr.t(e[1]), 52, Color.WHITE)
 	t.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	t.position = Vector2(0, 360)
 	t.size = Vector2(W, 200)
@@ -413,6 +430,18 @@ func show_ending(id: String) -> void:
 		n.position = Vector2(0, 720)
 		n.size = Vector2(W, 40)
 		overlay.add_child(n)
+		if all_seen():
+			var u := label("後日談がひらきました！　タイトルから見られます", 24, Color("ffd27a"))
+			u.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			u.position = Vector2(0, 770)
+			u.size = Vector2(W, 40)
+			overlay.add_child(u)
+	if epi:
+		var u := label("あそんでくれて、ありがとうございました", 26, Color("ffd27a"))
+		u.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		u.position = Vector2(0, 730)
+		u.size = Vector2(W, 40)
+		overlay.add_child(u)
 	var b := button("タイトルへ", 30)
 	b.position = Vector2(160, 860)
 	b.size = Vector2(W - 320, 90)

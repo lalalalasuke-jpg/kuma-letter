@@ -18,6 +18,8 @@ const ROUTES := {
 		"たぬきくんと話す", "たぬきくんと話す", "たぬきくんと話す", "うさぎさんと話す", "うさぎさんと話す",
 		"うさぎさんと話す", "うさぎさんと話す", "喫茶店へ行く", "喫茶店へ行く", "喫茶店へ行く", "喫茶店へ行く",
 		"手紙を届けに行く", "ふくろうのおじいさん", "公園"],
+	"dragon_good": ["テレビを見る", "お店へ出かける", "オリパを引く", "きつねくんと話す", "喫茶店へ行く",
+		"手紙を届けに行く", "ふくろうのおじいさん", "公園"],
 	"umbrella_no_rain": ["テレビを見る", "テレビを見る", "テレビを見る", "お店へ出かける", "傘を持っていく",
 		"窓の外を見る", "!もう少しお店にいる", "手紙を届けに行く", "うさぎさん"],
 }
@@ -50,10 +52,15 @@ func _initialize() -> void:
 				if ch.to_utf8_buffer().size() > 1 and not _sjis_ok(ch):
 					bad("フォントに無いかもしれない文字: " + ch)
 	var lines := 0
+	var ep := play(m, [], "epilogue")
+	if ep[0] != "epilogue":
+		bad("後日談: " + ep[0])
+	else:
+		print("OK epilogue（セリフ %d 行）" % ep[1])
 	for r in ROUTES:
 		var res := play(m, ROUTES[r])
 		lines += res[1]
-		var want: String = {"umbrella_no_rain": "hitochigai", "broke_then_azuke": "azuke", "talk_all_good": "good"}.get(r, r)
+		var want: String = {"umbrella_no_rain": "hitochigai", "broke_then_azuke": "azuke", "talk_all_good": "good", "dragon_good": "good"}.get(r, r)
 		if res[0] != want:
 			bad("%s: 着いたのは %s" % [r, res[0]])
 		else:
@@ -64,10 +71,10 @@ func _initialize() -> void:
 	quit(1 if ng else 0)
 
 
-func play(m, picks: Array) -> Array:
+func play(m, picks: Array, from := "start") -> Array:
 	m.flags = {}
 	m.visited = {}
-	m.jump("start")
+	m.jump(from)
 	var said := 0
 	var i := 0
 	m.step()
