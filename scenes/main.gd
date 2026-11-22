@@ -14,6 +14,7 @@ const ENDINGS := [
 	["good", "届いた手紙", "手がかりを集めて、ふくろうのおじいさんに手紙を届けた"],
 	["azuke", "お店に預けた手紙", "手紙はお店から、持ち主のもとへ"],
 	["hitochigai", "人ちがい", "思いきって声をかけたけれど……"],
+	["numa", "紳士、沼にはまる", "占いの1位を信じて、オリパを引きつづけた"],
 	["rain", "雨宿りの約束", "雨の日のお店で、あの日の続きが始まった"],
 ]
 const PLACE := {"home": "くまの家", "outside": "カードショップ", "oripa": "カードショップ",
@@ -315,7 +316,7 @@ func show_choices(opts: Array) -> void:
 	var bw := (W - 32 - 10) / 2.0 if choice_box.columns == 2 else W - 32.0
 	for o in opts:
 		var b := button(o.text, 25)
-		b.custom_minimum_size = Vector2(bw, 60 if opts.size() <= 5 else 70)
+		b.custom_minimum_size = Vector2(bw, 60 if opts.size() <= 5 or opts.size() > 8 else 70)
 		if visited.has(o.to):  # もう見た選択肢は少しうすく
 			b.add_theme_color_override("font_color", Color("9a8a7c"))
 		b.pressed.connect(func(): choose(o.to))
@@ -427,26 +428,26 @@ func show_gallery() -> void:
 	t.position = Vector2(0, 60)
 	t.size = Vector2(W, 60)
 	overlay.add_child(t)
-	var y := 170
+	var y := 150
 	for i in ENDINGS.size():
 		var e: Array = ENDINGS[i]
 		var got := seen.has(e[0])
 		var p := Panel.new()
 		p.position = Vector2(40, y)
-		p.size = Vector2(W - 80, 190)
+		p.size = Vector2(W - 80, 158)
 		p.add_theme_stylebox_override("panel", box(Color("fffaf2") if got else Color("e6ddd0"), Color("5a4636")))
 		overlay.add_child(p)
 		var head := label("%d. %s" % [i + 1, Tr.t(e[1]) if got else "？？？"], 32, Color("5a4636"))
 		head.position = Vector2(24, 20)
 		p.add_child(head)
 		var body := label(Tr.t(e[2]) if got else "まだ見ていないエンディング", 24, Color("6a5a4c"))
-		body.position = Vector2(24, 80)
-		body.size = Vector2(W - 128, 100)
+		body.position = Vector2(24, 70)
+		body.size = Vector2(W - 128, 80)
 		body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		p.add_child(body)
-		y += 210
+		y += 172
 	var b := button("もどる", 30)
-	b.position = Vector2(160, 1040)
+	b.position = Vector2(160, 1040 + 50)
 	b.size = Vector2(W - 320, 90)
 	b.pressed.connect(show_title)
 	overlay.add_child(b)

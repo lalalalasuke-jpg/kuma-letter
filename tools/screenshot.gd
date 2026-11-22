@@ -10,6 +10,7 @@ const SHOTS := [
 	["rain", ["stay", 0]],
 	["rain2", ["stay", 3]],
 	["good", ["good", 4]],
+	["bigwin", ["oripa_big", 3]],
 	["cafe", ["cafe", 2]],
 	["park", ["good", 0]],
 	["park2", ["good", 2]],

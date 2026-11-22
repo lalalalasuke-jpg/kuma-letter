@@ -25,6 +25,7 @@
 @ch kuma
 - テレビを見る -> tv
 - 本棚を見る -> shelf
+- 紅茶をいれる -> tea
 - お店へ出かける -> leave
 
 *tv
@@ -60,9 +61,30 @@
 @goto home
 
 *shelf
+@if shelf -> shelf2
+@set shelf
 @ch kuma_kandou
 本棚には、カードのバインダーがずらりと並んでいる。
 くま「どれも思い出のカードですな。……今日は、どんな出会いがあるやら」
+@goto home
+
+*shelf2
+@ch kuma
+いちばん古いバインダーには、はじめて大会に出た日のカードが入っている。
+くま「あの日は0勝でしたな。……それでも、楽しかったものです」
+@goto home
+
+*tea
+@if tea -> tea2
+@set tea
+@ch kuma_tere
+くまは、朝の紅茶をいれた。
+くま「お休みの朝は、やはりこれですな。……ふう」
+@goto home
+
+*tea2
+@ch kuma
+くま「紅茶は朝に1杯と決めておりますぞ。2杯目は、帰ってからのお楽しみですな」
 @goto home
 
 *leave
@@ -111,6 +133,7 @@
 - たぬきくんと話す -> talk_tanuki
 - きつねくんと話す -> talk_kitsune
 - 窓の外を見る -> window
+- オリパを引く -> oripa ? !broke
 - 喫茶店へ行く -> cafe
 - もう少しお店にいる -> stay ? cloud
 - 手紙を届けに行く -> deduce
@@ -122,23 +145,54 @@
 くま「差出人は、ポン吉さん。紙はずいぶん古いものですな」
 @goto shop
 
+# ---- うさぎさん（1回目＝手がかり → ほかの人の話を聞いたあとの反応 → 2回目 → 3回目）
 *talk_usagi
 @ch kuma usagi_setsumei
-@if c_usagi -> usagi2
+@if !c_usagi -> usagi1
+@if c_tanuki & !r_usagi -> usagi_r
+@add t_usagi
+@if t_usagi>=2 -> usagi3
+うさぎ「ポン吉さんのコレクション、大事にされてたカードばかりでしたよ。スリーブも1枚ずつ、きれいに入ってて」
+うさぎ「店長が言うには、昔のお店はもっとせまくて、テーブルが2つしかなかったそうです」
+うさぎ「そこで毎週、お客さんがまわりを囲むくらい、白熱した勝負があったんですって」
+@goto shop
+
+*usagi1
+@set c_usagi
 くま「うさぎさん、このカードに手紙が入っていたのですが……」
 うさぎ「えっ、手紙ですか！？」
 うさぎ「そのカード、この前買い取った古いコレクションのものです。遠くの町から、箱で送られてきて」
 うさぎ「送り主は……たしか、ポン吉さん。昔はうちのお店の常連さんだったって、店長が言ってました」
-@set c_usagi
 @goto shop
 
-*usagi2
-うさぎ「ポン吉さんのコレクション、大事にされてたカードばかりでしたよ」
+*usagi_r
+@set r_usagi
+@ch kuma usagi_pokan
+うさぎ「えっ、ポン吉さんって、たぬきくんのおじいちゃんだったんですか！？」
+@ch kuma usagi_setsumei
+うさぎ「どうりで……。箱の中に、ちいさなたぬきの子の写真が1枚まじってたんです。あとで、たぬきくんに渡さなきゃ」
 @goto shop
 
+*usagi3
+@ch kuma usagi_tefuri
+うさぎ「くまさん、手紙、届くといいですね！　わたしも応援してます」
+@if c_master -> shop
+うさぎ「そうだ、向かいの喫茶店のマスターなら、昔のお客さんのことにくわしいかも」
+@goto shop
+
+# ---- たぬきくん
 *talk_tanuki
 @ch kuma tanuki
-@if c_tanuki -> tanuki2
+@if !c_tanuki -> tanuki1
+@if c_kitsune & !r_tanuki -> tanuki_r
+@add t_tanuki
+@if t_tanuki>=2 -> tanuki3
+たぬき「おじいちゃん、ふくろうさんとの勝負の話をするとき、いつもうれしそうなんだ」
+たぬき「『あいつの攻めは、夜の森の嵐みたいだった』って。最後の勝負は、決着がつかないままなんだって」
+@goto shop
+
+*tanuki1
+@set c_tanuki
 たぬき「くまさん、こんにちはー。オリパどうでした？」
 くま「それが、こんな手紙が出てきまして」
 @ch kuma tanuki_nori
@@ -149,27 +203,119 @@
 @ch kuma tanuki
 たぬき「そういえば、おじいちゃん、『いつか返しに行かなきゃいけないカードがある』って言ってたなあ」
 たぬき「もしかして……まちがえて一緒に送っちゃったのかも」
-@set c_tanuki
 @goto shop
 
-*tanuki2
-たぬき「おじいちゃん、ふくろうさんとの勝負の話をするとき、いつもうれしそうなんだ」
+*tanuki_r
+@set r_tanuki
+@ch kuma tanuki_nori
+たぬき「えっ、おじいちゃんのライバルが、伝説の『夜の森の王』！？」
+@ch kuma tanuki
+たぬき「おじいちゃん、『負けた回数のほうが多いんだ』って笑ってたけど……そんなにすごい人だったんだ」
 @goto shop
 
+*tanuki3
+たぬき「手紙、届けてくれるの？　……ありがとう、くまさん。おじいちゃんも、きっと喜ぶよ」
+@goto shop
+
+# ---- きつねくん
 *talk_kitsune
 @ch kuma kitsune_megane
-@if c_kitsune -> kitsune2
+@if !c_kitsune -> kitsune1
+@if c_tanuki & !r_kitsune -> kitsune_r
+@add t_kitsune
+@if t_kitsune>=2 -> kitsune3
+きつね「『夜の森の王』の伝説の一戦、知ってます？　ライフ1から、切り札1枚で逆転したって話」
+@ch kuma kitsune
+きつね「……まあ、昔の雑誌のすみっこに載ってた話なので、どこまで本当かはわかりませんけど」
+@goto shop
+
+*kitsune1
+@set c_kitsune
 きつね「『夜の森の王』……！　なつかしいカードですね」
 くま「ご存じですかな？」
 きつね「昔、このカードを切り札にしていた伝説のプレイヤーがいたんです。夜の森みたいに静かに近づいて、一気に攻める」
 きつね「だからあだ名も『夜の森の王』。たしか、ふくろうの人だったはず」
 くま「ふくろうの……」
-@set c_kitsune
 @goto shop
 
-*kitsune2
+*kitsune_r
+@set r_kitsune
+@ch kuma kitsune
+きつね「えっ、たぬきくんのおじいさんが、『夜の森の王』のライバル！？」
+@ch kuma kitsune_megane
+きつね「伝説と毎週戦ってた人の孫が、となりのテーブルにいたなんて……。今度、たぬきくんにデッキを見せてもらおう」
+@goto shop
+
+*kitsune3
 きつね「本物の『夜の森の王』と、一度でいいから対戦してみたいなあ」
 @goto shop
+
+# ---- オリパ（おこづかいは3口ぶん。占いを見ていたら1口目が大当たり → 3口目で沼エンド）
+*oripa
+@add draw
+@bg oripa
+@if draw>=3 -> oripa3
+@if draw>=2 -> oripa2
+@ch kuma usagi_tefuri
+くま「うさぎさん、オリパをもう1口いただけますかな」
+うさぎ「はーい！　どうぞ！」
+@if tv>=1 -> oripa_big
+@ch kuma usagi
+くまは、オリパを開けた。
+出てきたのは『森のどんぐり兵』。
+くま「ふむ。……まあ、こういう日もありますな」
+@goto shop
+
+*oripa_big
+@set bigwin
+@ch kuma_koufun usagi_pokan
+くまは、オリパを開けた。
+……キラキラと光るカードが出てきた。
+『星降る夜のドラゴン』。このオリパの、大当たりだ！
+うさぎ「お、大当たりーー！！」
+@ch kuma_kandou usagi_tefuri
+くま「な、なんと……！　占いの1位は、本物でしたな！」
+くま「これは……もう1口、いけるのでは……？」
+@goto shop
+
+*oripa2
+@ch kuma usagi
+くま「うさぎさん、もう1口……！」
+くまは、オリパを開けた。
+出てきたのは『見習い魔法使い』。
+@if bigwin -> oripa2_big
+くま「おや、これはデッキに入りますな」
+@goto shop
+
+*oripa2_big
+@ch kuma_koufun usagi
+くま「いやいや、流れは来ていますぞ。次こそ、もう1枚の大当たりを……！」
+@goto shop
+
+*oripa3
+@set broke
+@if bigwin -> numa
+@ch kuma usagi
+くま「うさぎさん、最後の1口を」
+くまは、オリパを開けた。
+出てきたのは『ちいさなスライム』。
+@ch kuma_aseru usagi
+くま「……おこづかいが、なくなってしまいましたな」
+くま「さて、手紙のことを考えなくては」
+@goto shop
+
+*numa
+@ch kuma_koufun usagi_pokan
+くま「最後の1口……いや、ここからが勝負ですぞ！」
+くまは、オリパを開けた。開けた。もう1口買って、また開けた。
+うさぎ「く、くまさん……？　おこづかい、大丈夫ですか……？」
+@bg outside
+@ch kuma_yareyare
+……気づけば、空は夕焼けに染まっていた。
+くま「いやあ、今日はいい引きでしたな。……おや？」
+くま「何か、大事なことを忘れているような……」
+ポケットの中で、小さな手紙がかさりと鳴った。
+@end numa
 
 *window
 @if cloud -> window_cloud2
@@ -199,21 +345,36 @@
 くま「雨が降るかもしれませんな。……まあ、傘があるから大丈夫ですな」
 @goto shop
 
+# ---- 喫茶店
 *cafe
 @bg cafe
 @ch kuma hitsuji
-@if c_master -> cafe2
+@if !c_master -> cafe1
+@if c_tanuki & !r_master -> cafe_r
+@add t_cafe
+@if t_cafe>=2 -> cafe3
+マスター「ふくろうさんはね、いつもブラックコーヒーに角砂糖を3つ入れるんだ」
+マスター「『それじゃブラックの意味がない』って、昔よく相手の人に笑われていたっけ」
+@goto shop
+
+*cafe1
+@set c_master
 くまは、お店の向かいの喫茶店でひと休みすることにした。
 マスター「いらっしゃい。いつもの紅茶かな」
 くま「ええ、お願いします。……マスター、昔あのカードショップに通っていた方を、ご存じですかな」
 マスター「それなら、ふくろうさんかな。もう長いこと、うちの常連さんだよ」
 マスター「若いころはカードがすごく強かったらしいけど、今はおだやかで、やさしいおじいさんさ」
 マスター「夕方になると、公園のベンチで本を読んでいるよ」
-@set c_master
 くま「ありがとうございます。紅茶、ごちそうさまでした」
 @goto shop
 
-*cafe2
+*cafe_r
+@set r_master
+マスター「ポン吉さんのお孫さんが、向かいのお店に？　……そうか、ポン吉さんの」
+マスター「ふくろうさんが聞いたら、きっと喜ぶよ。ずっと、あの人の話をしていたからね」
+@goto shop
+
+*cafe3
 マスター「ふくろうさんなら、夕方は公園で本を読んでいるよ」
 @goto shop
 
