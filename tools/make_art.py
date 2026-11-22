@@ -20,7 +20,7 @@ CH = {
     "usagi": "usagi_base", "usagi_setsumei": "usagi_setsumei", "usagi_pokan": "usagi_pokan",
     "usagi_tefuri": "usagi_tefuri", "tanuki": "tanuki_base", "tanuki_nori": "tanuki_nori",
     "kitsune": "kitsune_base", "kitsune_megane": "kitsune_megane",
-    "fukurou": "fukurou_base", "hitsuji": "hitsuji_master",
+    "fukurou": "fukurou_base", "hitsuji": "hitsuji_master", "ponkichi": "ponkichi_base",
 }
 PLACEHOLDER = {}  # 例: {"station": ("駅", (196, 160, 120))}
 FONT = "C:/Windows/Fonts/BIZ-UDGothicB.ttc"
