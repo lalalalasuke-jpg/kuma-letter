@@ -1,0 +1,497 @@
+# 台本（story.txt）の英語版。ja: の行が台本の文とまったく同じなら、英語のときに en: の文が出る。
+# 台本の日本語を直したら、ここの ja: と en: も直すこと（直し忘れは tools/check_story.gd が「英訳がない」と教えてくれる）。
+# 英語のららすけは、ていねいな英国紳士ふう。オリパは mystery pack。
+
+# ---- 話す人の名前
+ja: ららすけ
+en: Lalasuke
+ja: うさぎ
+en: Bunny
+ja: たぬき
+en: Tanuki
+ja: きつね
+en: Fox
+ja: ふくろう
+en: Owl
+ja: マスター
+en: Master
+ja: ポン吉
+en: Ponkichi
+ja: テレビ
+en: TV
+ja: ？？？
+en: ???
+
+# ---- 家
+ja: くま紳士ららすけの、お休みの朝。
+en: A day off for Lalasuke, the gentleman bear.
+ja: 今日はお休み。いつものお店で、オリパを引きますかな
+en: No work today. Perhaps I shall try a mystery pack at the usual shop.
+ja: テレビを見る
+en: Watch TV
+ja: 本棚を見る
+en: Look at the bookshelf
+ja: 紅茶をいれる
+en: Make tea
+ja: お店へ出かける
+en: Head to the shop
+ja: テレビでは、朝のワイドショーをやっている。
+en: A morning variety show is on TV.
+ja: きょうの運勢、第1位は……くま座のあなた！
+en: And today's luckiest sign is... the Bear!
+ja: ラッキーアイテムは、傘です！
+en: Your lucky item is an umbrella!
+ja: おや、1位ですな。これはオリパも期待できますぞ
+en: Oh my, number one. The mystery packs look promising today.
+ja: コマーシャルが流れている。
+en: A commercial is playing.
+ja: いつものカードゲーム、新しいセットが発売中！
+en: The new set of your favorite card game is out now!
+ja: 新弾！　……オリパのあとで、1パック買いますかな
+en: A new set! ...I shall buy a pack after the mystery pack.
+ja: 天気予報をやっている。
+en: The weather forecast is on.
+ja: きょうは、雲が多いでしょう
+en: Expect plenty of clouds today.
+ja: ふむ。雲が多い、と
+en: Hmm. Plenty of clouds, they say.
+ja: テレビは、もう十分見ましたな
+en: I believe I've watched enough TV.
+ja: 本棚には、カードのバインダーがずらりと並んでいる。
+en: Card binders line the bookshelf.
+ja: どれも思い出のカードですな。……今日は、どんな出会いがあるやら
+en: Every card holds a memory. ...I wonder what I shall find today.
+ja: いちばん古いバインダーには、はじめて大会に出た日のカードが入っている。
+en: The oldest binder holds the cards from his very first tournament.
+ja: あの日は0勝でしたな。……それでも、楽しかったものです
+en: Not a single win that day. ...Still, it was great fun.
+ja: ららすけは、朝の紅茶をいれた。
+en: Lalasuke made his morning tea.
+ja: お休みの朝は、やはりこれですな。……ふう
+en: Nothing beats this on a day off. ...Ahh.
+ja: 紅茶は朝に1杯と決めておりますぞ。2杯目は、帰ってからのお楽しみですな
+en: One cup in the morning, that is my rule. The second shall wait until I return.
+ja: ……そういえば、雲が多いと言っていましたな
+en: ...Come to think of it, they did say it would be cloudy.
+ja: 傘を持っていく？
+en: Take an umbrella?
+ja: 傘を持っていく
+en: Take an umbrella
+ja: 持っていかない
+en: Leave it
+ja: 念のため、ですな
+en: Just in case.
+
+# ---- お店・オリパ
+ja: いつものカードショップに着いた。
+en: He arrived at the usual card shop.
+ja: いらっしゃいませ、ららすけさん！
+en: Welcome, Mr. Lalasuke!
+ja: こんにちは。オリパを1口、いただけますかな
+en: Good day. One mystery pack, if you please.
+ja: はーい！　新しく作ったオリパですよ。古いカードも入ってます
+en: Coming right up! It's a brand-new batch, with some old cards mixed in.
+ja: ららすけは、オリパを1つ選んで開けた。
+en: Lalasuke picked a pack and opened it.
+ja: ……おや、これは
+en: ...Oh? What's this?
+ja: 出てきたのは、少し色あせた古いカード『夜の森の王』。
+en: Out came a faded old card: "King of the Night Forest."
+ja: スリーブの中に、小さく折りたたまれた紙が入っている。
+en: A small folded paper was tucked inside the sleeve.
+ja: 手紙……ですかな？
+en: A letter...?
+ja: 『夜の森の王へ\n　あの日の勝負の続きを、いつか。\n　　　　　　　　　　　　ポン吉』
+en: "To the King of the Night Forest,\n  Let's finish that match someday.\n                         - Ponkichi"
+ja: どなたかの、大切な手紙のようですな
+en: This seems to be someone's precious letter.
+ja: これは、届けてさしあげなくては
+en: I really must deliver it.
+ja: 手紙をよく見る
+en: Read the letter
+ja: うさぎさんと話す
+en: Talk to Bunny
+ja: たぬきくんと話す
+en: Talk to Tanuki
+ja: きつねくんと話す
+en: Talk to Fox
+ja: 窓の外を見る
+en: Look out the window
+ja: オリパを引く
+en: Buy a mystery pack
+ja: 喫茶店へ行く
+en: Go to the cafe
+ja: もう少しお店にいる
+en: Stay a little longer
+ja: 手紙を届けに行く
+en: Deliver the letter
+ja: 宛名は『夜の森の王』……。お名前ではなく、あだ名のようですな
+en: "King of the Night Forest"... That sounds like a nickname, not a real name.
+ja: 差出人は、ポン吉さん。紙はずいぶん古いものですな
+en: The sender is a Mr. Ponkichi. The paper is quite old.
+
+# ---- うさぎ
+ja: ポン吉さんのコレクション、大事にされてたカードばかりでしたよ。スリーブも1枚ずつ、きれいに入ってて
+en: Mr. Ponkichi took such good care of his collection. Every card was neatly sleeved.
+ja: 店長が言うには、昔のお店はもっとせまくて、テーブルが2つしかなかったそうです
+en: The manager says the shop used to be much smaller, with only two tables.
+ja: そこで毎週、お客さんがまわりを囲むくらい、白熱した勝負があったんですって
+en: And every week there were matches so heated that a crowd gathered around them!
+ja: うさぎさん、このカードに手紙が入っていたのですが……
+en: Bunny, I found a letter inside this card...
+ja: えっ、手紙ですか！？
+en: What, a letter!?
+ja: そのカード、この前買い取った古いコレクションのものです。遠くの町から、箱で送られてきて
+en: That card came from an old collection we bought recently. It was mailed in a box from a faraway town.
+ja: 送り主は……たしか、ポン吉さん。昔はうちのお店の常連さんだったって、店長が言ってました
+en: The sender was... Mr. Ponkichi, I think. The manager said he used to be a regular here.
+ja: えっ、ポン吉さんって、たぬきくんのおじいちゃんだったんですか！？
+en: Wait, Mr. Ponkichi is Tanuki's grandpa!?
+ja: どうりで……。箱の中に、ちいさなたぬきの子の写真が1枚まじってたんです。あとで、たぬきくんに渡さなきゃ
+en: That explains it... There was a photo of a little tanuki in the box. I'll give it to Tanuki later.
+ja: ららすけさん、手紙、届くといいですね！　わたしも応援してます
+en: I hope the letter finds its way, Mr. Lalasuke! I'm rooting for you.
+ja: そうだ、向かいの喫茶店のマスターなら、昔のお客さんのことにくわしいかも
+en: Oh, the master of the cafe across the street might know about the old regulars.
+
+# ---- たぬき
+ja: おじいちゃん、ふくろうさんとの勝負の話をするとき、いつもうれしそうなんだ
+en: Grandpa always looks so happy when he talks about his matches with Mr. Owl.
+ja: 『あいつの攻めは、夜の森の嵐みたいだった』って。最後の勝負は、決着がつかないままなんだって
+en: He says, "His attacks were like a storm in the night forest." Their last match never got finished.
+ja: くまさん、こんにちはー。オリパどうでした？
+en: Hi, Mr. Bear! How was your mystery pack?
+ja: それが、こんな手紙が出てきまして
+en: Well, this letter turned up.
+ja: ……えっ。ポン吉って、ぼくのおじいちゃんの名前だ！
+en: ...Huh? Ponkichi is my grandpa's name!
+ja: この字も、おじいちゃんの字だよ。この前カードを整理して、このお店に送ったって言ってた
+en: That's his handwriting, too. He said he sorted out his cards and sent them to this shop.
+ja: おじいちゃん、昔このお店ですごいライバルがいたんだって。『ふくろうさん』って呼んでた
+en: Grandpa had a great rival at this shop a long time ago. He called him "Mr. Owl."
+ja: ふくろうさん……
+en: Mr. Owl...
+ja: そういえば、おじいちゃん、『いつか返しに行かなきゃいけないカードがある』って言ってたなあ
+en: Oh, and Grandpa once said, "There's a card I have to return someday."
+ja: もしかして……まちがえて一緒に送っちゃったのかも
+en: Maybe... he sent it by mistake.
+ja: えっ、おじいちゃんのライバルが、伝説の『夜の森の王』！？
+en: Wait, Grandpa's rival was the legendary "King of the Night Forest"!?
+ja: おじいちゃん、『負けた回数のほうが多いんだ』って笑ってたけど……そんなにすごい人だったんだ
+en: Grandpa laughed and said he lost more than he won... I didn't know his rival was that amazing.
+ja: 手紙、届けてくれるの？　……ありがとう、くまさん。おじいちゃんも、きっと喜ぶよ
+en: You'll deliver the letter? ...Thanks, Mr. Bear. Grandpa will be so happy.
+
+# ---- きつね
+ja: 『夜の森の王』の伝説の一戦、知ってます？　ライフ1から、切り札1枚で逆転したって話
+en: Do you know the legendary match of the "King of the Night Forest"? He came back from one life with a single ace card.
+ja: ……まあ、昔の雑誌のすみっこに載ってた話なので、どこまで本当かはわかりませんけど
+en: ...Well, it was a tiny story in the corner of an old magazine, so who knows if it's true.
+ja: 『夜の森の王』……！　なつかしいカードですね
+en: "King of the Night Forest"...! Now that's a card I haven't seen in ages.
+ja: ご存じですかな？
+en: You know of it?
+ja: 昔、このカードを切り札にしていた伝説のプレイヤーがいたんです。夜の森みたいに静かに近づいて、一気に攻める
+en: There was a legendary player who used it as his ace. He'd creep up quietly, like the night forest, then strike all at once.
+ja: だからあだ名も『夜の森の王』。たしか、ふくろうの人だったはず
+en: That's why they called him the "King of the Night Forest." I believe he was an owl.
+ja: ふくろうの……
+en: An owl...
+ja: えっ、たぬきくんのおじいさんが、『夜の森の王』のライバル！？
+en: What, Tanuki's grandpa was the rival of the "King of the Night Forest"!?
+ja: 伝説と毎週戦ってた人の孫が、となりのテーブルにいたなんて……。今度、たぬきくんにデッキを見せてもらおう
+en: The grandson of a legend's weekly rival, right at the next table... I'll ask Tanuki to show me his deck.
+ja: 本物の『夜の森の王』と、一度でいいから対戦してみたいなあ
+en: I'd love to play the real "King of the Night Forest," just once.
+
+# ---- オリパをもう1口
+ja: うさぎさん、オリパをもう1口いただけますかな
+en: Bunny, might I have another mystery pack?
+ja: はーい！　どうぞ！
+en: Sure thing! Here you go!
+ja: ららすけは、オリパを開けた。
+en: Lalasuke opened the pack.
+ja: 出てきたのは『森のどんぐり兵』。
+en: Out came "Acorn Soldier of the Woods."
+ja: ふむ。……まあ、こういう日もありますな
+en: Hmm. ...Well, some days are like this.
+ja: ……キラキラと光るカードが出てきた。
+en: ...A sparkling card came out.
+ja: 『星降る夜のドラゴン』。このオリパの、大当たりだ！
+en: "Dragon of the Starfall Night." The top prize of the pack!
+ja: お、大当たりーー！！
+en: Th-the top prize!!
+ja: な、なんと……！　占いの1位は、本物でしたな！
+en: G-good heavens...! The horoscope was right after all!
+ja: これは……もう1口、いけるのでは……？
+en: Perhaps... just one more pack...?
+ja: うさぎさん、もう1口……！
+en: Bunny, one more...!
+ja: 出てきたのは『見習い魔法使い』。
+en: Out came "Apprentice Mage."
+ja: おや、これはデッキに入りますな
+en: Oh, this one will fit my deck.
+ja: いやいや、流れは来ていますぞ。次こそ、もう1枚の大当たりを……！
+en: No, no, luck is on my side. The next one will surely be another top prize...!
+ja: うさぎさん、最後の1口を
+en: Bunny, my last pack, please.
+ja: 出てきたのは『ちいさなスライム』。
+en: Out came "Tiny Slime."
+ja: ……おこづかいが、なくなってしまいましたな
+en: ...And there goes my allowance.
+ja: さて、手紙のことを考えなくては
+en: Now then, I must think about the letter.
+ja: 最後の1口……いや、ここからが勝負ですぞ！
+en: My last pack... no, the real game starts now!
+ja: ららすけは、オリパを開けた。開けた。もう1口買って、また開けた。
+en: Lalasuke opened a pack. And another. He bought one more, and opened it too.
+ja: ら、ららすけさん……？　おこづかい、大丈夫ですか……？
+en: M-Mr. Lalasuke...? Is your allowance going to be okay...?
+ja: ……気づけば、空は夕焼けに染まっていた。
+en: ...Before he knew it, the sky was glowing with sunset.
+ja: いやあ、今日はいい引きでしたな。……おや？
+en: Ah, what splendid pulls today. ...Hm?
+ja: 何か、大事なことを忘れているような……
+en: I feel I've forgotten something important...
+ja: ポケットの中で、小さな手紙がかさりと鳴った。
+en: In his pocket, a small letter rustled.
+
+# ---- 窓
+ja: 窓の外は、いいお天気だ。
+en: It's a lovely day outside.
+ja: お散歩日和ですな
+en: Perfect weather for a stroll.
+ja: 窓の外を見ると、雲がかかって暗くなってきた。
+en: Clouds have rolled in, and it's getting dark outside.
+ja: ……雨が降るかもしれませんな
+en: ...It may well rain.
+ja: 傘はありませんし、もう少しお店にいるのもよさそうですな
+en: I have no umbrella. Perhaps I should stay at the shop a little longer.
+ja: 空はどんどん暗くなっている。
+en: The sky is growing darker and darker.
+ja: 雨が降るかもしれませんな。……まあ、傘があるから大丈夫ですな
+en: It may rain. ...Well, I have my umbrella, so no matter.
+
+# ---- 喫茶店
+ja: ふくろうさんはね、いつもブラックコーヒーに角砂糖を3つ入れるんだ
+en: Mr. Owl always takes his black coffee with three sugar cubes.
+ja: 『それじゃブラックの意味がない』って、昔よく相手の人に笑われていたっけ
+en: His friend used to laugh, "Then why order it black?"
+ja: ららすけは、お店の向かいの喫茶店でひと休みすることにした。
+en: Lalasuke decided to take a break at the cafe across the street.
+ja: いらっしゃい。いつもの紅茶かな
+en: Welcome. Your usual tea?
+ja: ええ、お願いします。……マスター、昔あのカードショップに通っていた方を、ご存じですかな
+en: Yes, please. ...Master, do you know anyone who went to that card shop long ago?
+ja: それなら、ふくろうさんかな。もう長いこと、うちの常連さんだよ
+en: That would be Mr. Owl. He's been a regular here for years.
+ja: 若いころはカードがすごく強かったらしいけど、今はおだやかで、やさしいおじいさんさ
+en: They say he was very strong at cards when he was young. Now he's a calm, gentle old fellow.
+ja: 夕方になると、公園のベンチで本を読んでいるよ
+en: In the evenings, he reads on a bench in the park.
+ja: ありがとうございます。紅茶、ごちそうさまでした
+en: Thank you kindly. The tea was lovely.
+ja: ポン吉さんのお孫さんが、向かいのお店に？　……そうか、ポン吉さんの
+en: Mr. Ponkichi's grandson is at the shop across the street? ...Well, well.
+ja: ふくろうさんが聞いたら、きっと喜ぶよ。ずっと、あの人の話をしていたからね
+en: Mr. Owl will be delighted. He's talked about Ponkichi all these years.
+ja: ふくろうさんなら、夕方は公園で本を読んでいるよ
+en: Mr. Owl reads in the park in the evenings.
+
+# ---- 推理
+ja: 手紙を届けるには……宛名の『夜の森の王』が、どなたなのかですな
+en: To deliver this, I must work out who the "King of the Night Forest" is.
+ja: 『夜の森の王』は、だれ？
+en: Who is the "King of the Night Forest"?
+ja: うさぎさん
+en: Bunny
+ja: たぬきくん
+en: Tanuki
+ja: ふくろうのおじいさん
+en: Old Mr. Owl
+ja: まだわからない……お店に預ける
+en: Not sure... leave it at the shop
+ja: もう少し調べる
+en: Look into it more
+ja: ふくろうのおじいさん……。今、どこにいらっしゃるのでしょう
+en: Old Mr. Owl... Where might he be right now?
+ja: 公園
+en: The park
+ja: 喫茶店
+en: The cafe
+ja: 大会の会場
+en: The tournament hall
+ja: もしや、あなたが『夜の森の王』では……？
+en: Might you be the "King of the Night Forest"...?
+ja: ええっ！？　ち、ちがいますよー！
+en: Whaaat!? N-no, not me!
+ja: ぼくも、ちがうよー
+en: Not me either!
+ja: ……人ちがいでしたな
+en: ...It seems I was mistaken.
+ja: その日、手紙は届かなかった。
+en: The letter did not reach its owner that day.
+ja: ららすけは、ふくろうのおじいさんを探しに出かけた。
+en: Lalasuke set out to find old Mr. Owl.
+ja: あの、もしや『夜の森の王』さんでは……
+en: Excuse me, might you be the "King of the Night Forest"...?
+ja: いえ、わたしはただの通りすがりのハトですが
+en: Er, no. I'm just a pigeon passing by.
+
+# ---- お店に預ける
+ja: うさぎさん。この手紙とカード、お店で預かっていただけますかな。持ち主が見つかるかもしれません
+en: Bunny, could the shop keep this letter and card? Its owner may turn up.
+ja: わかりました！　大事にお預かりしますね
+en: Of course! I'll take good care of them.
+ja: ……数日後。
+en: ...A few days later.
+ja: ららすけさん！　あのカード、ふくろうのおじいさんが受け取りに来ましたよ。『ありがとう』って
+en: Mr. Lalasuke! An old owl came to pick up that card. He said, "Thank you."
+ja: ……そうでしたか。届いてよかったですな
+en: ...I see. I'm glad it reached him.
+ja: どんな方だったのでしょう。……お会いしてみたかったですな
+en: I wonder what he was like. ...I should have liked to meet him.
+
+# ---- 公園（届いた手紙）
+ja: 夕方の公園。ベンチで、ふくろうのおじいさんが本を読んでいる。
+en: The park at dusk. An old owl is reading on a bench.
+ja: あの……『夜の森の王』さん、でいらっしゃいますかな
+en: Excuse me... Are you, by any chance, the "King of the Night Forest"?
+ja: ……ほう。その呼び名を聞くのは、何十年ぶりかな
+en: ...Oh ho. I haven't heard that name in decades.
+ja: ららすけは、カードと手紙を渡した。
+en: Lalasuke handed over the card and the letter.
+ja: 『夜の森の王』……。わしが昔、ライバルに預けたカードだ
+en: "King of the Night Forest"... I left this card with my rival long ago.
+ja: ポン吉のやつとは、勝負の途中で別れることになってね。『続きをやるまで、わしのカードを預かっておけ』と言ったのさ
+en: Ponkichi and I had to part in the middle of a match. I told him, "Keep my card until we finish."
+ja: この手紙は……そうか。あいつ、カードを返しに来るとき、一緒に渡すつもりだったんだな
+en: And this letter... I see. He meant to give it to me when he brought the card back.
+ja: ありがとう、くまさん。よく届けてくれたね
+en: Thank you, Mr. Bear. You did well to bring it to me.
+ja: ……よし。あいつとの続きの前に、肩ならしをしておきたい。くまさん、一戦どうかね
+en: ...Right. Before I finish things with him, I'd like a warm-up. Care for a match, Mr. Bear?
+ja: よろこんで！
+en: With pleasure!
+ja: ベンチをテーブルにして、二人はカードを広げた。
+en: Using the bench as a table, the two laid out their cards.
+ja: ふくろうのおじいさんの攻めは、今でもとても鋭かった。でも、とても楽しそうだった。
+en: The old owl's attacks were still razor-sharp. But he looked like he was having a wonderful time.
+ja: ……参りました
+en: ...I concede.
+ja: ほっほ。いい勝負だった
+en: Ho ho. A fine match.
+ja: ららすけは、今日引いたばかりの『星降る夜のドラゴン』をデッキに入れた。
+en: Lalasuke added the "Dragon of the Starfall Night" he had just pulled to his deck.
+ja: ほう、いいカードを引いたね。それなら、手加減はいらないかな
+en: Oh ho, a fine card you've got there. Then I needn't hold back.
+ja: ららすけのドラゴンが、夕焼けの空に舞いあがる……！
+en: Lalasuke's dragon soared into the sunset sky...!
+ja: おっと、これは危ない。……だが、まだまだ
+en: Whoa, that was close. ...But not close enough.
+ja: 最後は、ふくろうのおじいさんの鋭い一撃で、勝負が決まった。
+en: In the end, one sharp strike from the old owl decided the match.
+ja: ……あと少しでしたな
+en: ...So very close.
+ja: ほっほ。いい切り札だ。あのころのポン吉を思い出したよ
+en: Ho ho. A fine ace. It reminds me of Ponkichi back then.
+ja: さて、ポン吉にも、手紙を書くとしよう
+en: Now then, I think I'll write Ponkichi a letter of my own.
+ja: 夕焼けの中、ららすけはほっこりした気持ちで帰り道を歩いた。
+en: Under the sunset, Lalasuke walked home with a warm heart.
+
+# ---- 雨宿り
+ja: ぽつ、ぽつ……ざああああ。
+en: Pit, pat... WHOOSH.
+ja: 外は、あっという間に土砂降りになった。
+en: In no time at all, it was pouring outside.
+ja: わあ、すごい雨！　ららすけさん、やむまでゆっくりしていってください
+en: Wow, what a downpour! Mr. Lalasuke, please stay until it stops.
+ja: お言葉に甘えますかな
+en: I shall gladly accept.
+ja: 雨の日って、昔からのお客さんがふらっと来るんですよ
+en: Old regulars often drop by on rainy days.
+ja: 店長が言ってたんです。昔、雨の日になると必ず来て、勝負していく二人組がいたって
+en: The manager told me there used to be a pair who always came to play whenever it rained.
+ja: カラン、とドアのベルが鳴った。
+en: Ding-a-ling went the bell on the door.
+ja: いやあ、降られてしまったよ。少し雨宿りさせておくれ
+en: My, I got caught in the rain. Mind if I take shelter for a bit?
+ja: ふくろうさん！　いらっしゃいませ
+en: Mr. Owl! Welcome!
+ja: ……おや。そのカードは
+en: ...Oh? That card...
+ja: 『夜の森の王』じゃないか。わしが昔、ライバルに預けたカードだ
+en: Why, it's "King of the Night Forest." I left that card with my rival long ago.
+ja: ららすけは、手紙を見せた。
+en: Lalasuke showed him the letter.
+ja: ……ポン吉のやつ。こんなところに、手紙をはさんでいたのか
+en: ...That Ponkichi. So he tucked a letter in here.
+ja: あの日も、こんな雨でね。勝負の途中で、あいつの引っ越しのトラックが来てしまって
+en: It rained just like this that day. His moving truck came right in the middle of our match.
+ja: 『続きをやるまで、わしのカードを預かっておけ』と言ったきり、それっきりさ
+en: I told him, "Keep my card until we finish," and that was the last I saw of him.
+ja: ポン吉って……ぼくのおじいちゃんです！
+en: Ponkichi... that's my grandpa!
+ja: なんと！　あいつの孫か
+en: Good heavens! You're his grandson?
+ja: おじいちゃんに電話してみます！
+en: I'll call Grandpa!
+ja: 電話の画面ごしに、なつかしい声が聞こえる。
+en: A familiar voice came through the phone screen.
+ja: ……ふくろう？　本当に、ふくろうなのか！
+en: ...Owl? Is that really you, Owl!?
+ja: おまえのカードの箱から、わしのカードが出てきたぞ。手紙つきでな
+en: My card turned up in your box of cards. With a letter, no less.
+ja: しまった！　返しに行くつもりで、手紙まではさんでおいたのに……うっかり一緒に送ってしまったのか
+en: Oh no! I meant to bring it back to you, letter and all... and I sent it off by mistake!
+ja: ほっほ。おかげで、こうして話せた。……ポン吉。あの日の続きを、やろうじゃないか
+en: Ho ho. Thanks to that, we're talking again. ...Ponkichi. Let's finish that match.
+ja: 雨の音を聞きながら、画面ごしに、あの日の勝負の続きが始まった。
+en: To the sound of the rain, the unfinished match began again, through the screen.
+ja: 雨があがると、窓の外に虹がかかっていた。
+en: When the rain stopped, a rainbow hung outside the window.
+ja: 雨宿りも、悪くないものですな
+en: Sheltering from the rain isn't so bad after all.
+
+# ---- 後日談
+ja: それから、しばらくたったある日曜日。
+en: One Sunday, some time later.
+ja: ららすけさん、いらっしゃい！　今日は、すごいお客さんが来てますよ
+en: Welcome, Mr. Lalasuke! We have a very special guest today.
+ja: くまさん！　おじいちゃんが、町に帰ってきたんだ！
+en: Mr. Bear! Grandpa came back to town!
+ja: やあ、きみがららすけさんか。手紙のことは、孫から聞いたよ。ありがとう
+en: Ah, so you're Lalasuke. My grandson told me about the letter. Thank you.
+ja: わしがうっかり者なせいで、ずいぶん遠回りをさせてしまったね
+en: My carelessness sent you on quite a roundabout journey.
+ja: 遅いぞ、ポン吉。何十年待ったと思っている
+en: You're late, Ponkichi. Do you know how many decades I've waited?
+ja: ははは、すまんすまん。……預かっていたカードは、もう届いているね
+en: Ha ha, sorry, sorry. ...I see the card I was keeping has already reached you.
+ja: ああ。だから今日は、正真正銘、あの日の続きだ
+en: It has. So today, we truly finish that match.
+ja: テーブルをはさんで、二人がカードを広げた。
+en: The two sat across the table and laid out their cards.
+ja: まわりを、うさぎさん、たぬきくん、きつねくん、そしてららすけが囲む。
+en: Bunny, Tanuki, Fox, and Lalasuke gathered around them.
+ja: 本物の『夜の森の王』の攻めだ……！
+en: The real "King of the Night Forest" on the attack...!
+ja: おじいちゃん、がんばれー！
+en: Go, Grandpa!
+ja: 昔のお店も、きっとこんなふうだったんですね
+en: The shop must have been just like this in the old days.
+ja: ええ。……いい勝負ですな
+en: Indeed. ...A splendid match.
+ja: 勝負は、最後の1枚までもつれこんだ。
+en: The match went down to the very last card.
+ja: あっ……！　もう、閉店の時間です！
+en: Oh...! It's closing time already!
+ja: なんと。……続きは、また来週だな
+en: Well, I never. ...We'll finish next week, then.
+ja: ほっほ。今度は、待たせるなよ
+en: Ho ho. Don't keep me waiting this time.
+ja: 来週も、見に来ませんとな
+en: I simply must come and watch next week.
+ja: こうして、いつものお店に、新しい「いつもの」がひとつ増えた。
+en: And so, the usual shop gained a new "usual."

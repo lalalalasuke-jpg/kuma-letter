@@ -30,6 +30,7 @@ func _initialize() -> void:
 	var Main = load("res://scenes/main.gd")
 	Main.save_path = "user://check_tmp.cfg"
 	var m = Main.new()
+	Tr.lang = "ja"  # 選択肢を日本語の文字で選ぶので
 	m.parse_story()
 	m.build_ui()
 	root.add_child(m)
@@ -47,6 +48,12 @@ func _initialize() -> void:
 			for n in op.a.split(" ", false):
 				if not ResourceLoader.exists("res://art/ch/%s.png" % n):
 					bad("立ち絵がない: " + n)
+		if op.t == "say" and not Tr.has_en(op.text):
+			bad("英訳がない: " + op.text)
+		if op.t == "say" and op.who != "" and not Tr.has_en(op.who):
+			bad("名前の英訳がない: " + op.who)
+		if op.t == "opt" and not Tr.has_en(op.text):
+			bad("選択肢の英訳がない: " + op.text)
 		if op.t == "say":
 			for ch in (op.who + op.text):
 				if ch.to_utf8_buffer().size() > 1 and not _sjis_ok(ch):

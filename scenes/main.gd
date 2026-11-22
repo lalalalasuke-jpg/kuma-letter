@@ -45,6 +45,7 @@ var text_label: Label
 var next_mark: Label
 var choice_box: GridContainer
 var overlay: Control
+var menu_btn: Button
 
 
 func _ready() -> void:
@@ -112,6 +113,7 @@ func jump(label: String) -> void:
 
 # ---------------------------------------------------------------- 進める
 func start_game() -> void:
+	menu_btn.text = Tr.t("タイトルへ")  # ことばを切り替えたあとでも合うように
 	flags = {}
 	visited = {}
 	clear_overlay()
@@ -194,7 +196,7 @@ func build_ui() -> void:
 	place_label = label("", 30, Color.WHITE)
 	place_label.position = Vector2(24, 18)
 	add_child(place_label)
-	var menu_btn := button("タイトルへ", 22)
+	menu_btn = button("タイトルへ", 22)
 	menu_btn.position = Vector2(W - 170, 14)
 	menu_btn.size = Vector2(150, 52)
 	menu_btn.pressed.connect(show_title)
@@ -372,13 +374,14 @@ func show_title() -> void:
 	kuma.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
 	kuma.position = Vector2(W / 2.0 - 150, BG_H - 340)
 	overlay.add_child(kuma)
-	var t := label("くま紳士と\n迷子の手紙", 64, Color("5a4636"))
+	var t := label("くま紳士と\n迷子の手紙", 64 if Tr.lang == "ja" else 52, Color("5a4636"))
 	t.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	t.position = Vector2(0, BG_H + 40)
+	t.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	t.position = Vector2(0, BG_H + 30)
 	t.size = Vector2(W, 180)
 	overlay.add_child(t)
-	var y := BG_H + 280
-	var items := [["はじめから", start_game], ["エンディング図鑑（%d/%d）" % [seen.size(), ENDINGS.size()], show_gallery]]
+	var y := BG_H + 250
+	var items := [["はじめから", start_game], [Tr.t("エンディング図鑑（%d/%d）") % [seen.size(), ENDINGS.size()], show_gallery]]
 	if all_seen():  # 全部見たら後日談がひらく
 		items.append(["おまけ：後日談", start_epilogue])
 	for item in items:
@@ -387,7 +390,19 @@ func show_title() -> void:
 		b.size = Vector2(W - 240, 90)
 		b.pressed.connect(item[1])
 		overlay.add_child(b)
-		y += 120
+		y += 115
+	# ことばの切り替え（右下の小さなボタン）
+	var lb := button("English" if Tr.lang == "ja" else "日本語", 24)
+	lb.position = Vector2(W - 200, 1280 - 80)
+	lb.size = Vector2(180, 60)
+	lb.pressed.connect(toggle_lang)
+	overlay.add_child(lb)
+
+
+func toggle_lang() -> void:
+	Tr.lang = "en" if Tr.lang == "ja" else "ja"
+	write_save()
+	show_title()
 
 
 func all_seen() -> bool:
@@ -413,7 +428,8 @@ func show_ending(id: String) -> void:
 	if is_inside_tree():
 		await get_tree().create_timer(0.4).timeout
 	cover(Color(0.2, 0.15, 0.1, 0.94))
-	var t := label(("おしまい" if epi else "END") + "\n「%s」" % Tr.t(e[1]), 52, Color.WHITE)
+	var quote := "「%s」" if Tr.lang == "ja" else "\"%s\""
+	var t := label((Tr.t("おしまい") if epi else "END") + "\n" + quote % Tr.t(e[1]), 52 if Tr.lang == "ja" else 44, Color.WHITE)
 	t.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	t.position = Vector2(0, 360)
 	t.size = Vector2(W, 200)
@@ -425,7 +441,7 @@ func show_ending(id: String) -> void:
 	s.size = Vector2(W - 120, 120)
 	overlay.add_child(s)
 	if first:
-		var n := label("エンディング図鑑に登録しました（%d/%d）" % [seen.size(), ENDINGS.size()], 24, Color("ffd27a"))
+		var n := label(Tr.t("エンディング図鑑に登録しました（%d/%d）") % [seen.size(), ENDINGS.size()], 24, Color("ffd27a"))
 		n.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		n.position = Vector2(0, 720)
 		n.size = Vector2(W, 40)
@@ -466,7 +482,7 @@ func show_gallery() -> void:
 		p.size = Vector2(W - 80, 158)
 		p.add_theme_stylebox_override("panel", box(Color("fffaf2") if got else Color("e6ddd0"), Color("5a4636")))
 		overlay.add_child(p)
-		var head := label("%d. %s" % [i + 1, Tr.t(e[1]) if got else "？？？"], 32, Color("5a4636"))
+		var head := label("%d. %s" % [i + 1, Tr.t(e[1]) if got else Tr.t("？？？")], 32, Color("5a4636"))
 		head.position = Vector2(24, 20)
 		p.add_child(head)
 		var body := label(Tr.t(e[2]) if got else "まだ見ていないエンディング", 24, Color("6a5a4c"))
@@ -484,15 +500,19 @@ func show_gallery() -> void:
 
 # ---------------------------------------------------------------- 保存
 func load_save() -> void:
+	# ことばは、はじめはブラウザ/PCの言語（日本語以外なら英語）。切り替えたら保存
+	Tr.lang = "ja" if OS.get_locale_language() == "ja" else "en"
 	var c := ConfigFile.new()
 	if c.load(save_path) == OK:
 		for k in c.get_value("endings", "seen", []):
 			seen[k] = true
+		Tr.lang = c.get_value("settings", "lang", Tr.lang)
 
 
 func write_save() -> void:
 	var c := ConfigFile.new()
 	c.set_value("endings", "seen", seen.keys())
+	c.set_value("settings", "lang", Tr.lang)
 	c.save(save_path)
 
 

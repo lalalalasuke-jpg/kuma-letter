@@ -22,6 +22,10 @@ func _initialize() -> void:
 	Main.save_path = "user://shot_tmp.cfg"
 	var m = load("res://scenes/main.tscn").instantiate()
 	root.add_child(m)
+	await process_frame
+	var en := "en" in OS.get_cmdline_user_args()  # -- en で英語の写真（ファイル名の頭に en_）
+	Tr.lang = "en" if en else "ja"
+	m.show_title()
 	DirAccess.make_dir_recursive_absolute("res://build/shots")
 	for s in SHOTS:
 		if s[1].size() > 0:
@@ -35,17 +39,17 @@ func _initialize() -> void:
 			m.finish_typing()
 		for f in 8:
 			await process_frame
-		root.get_texture().get_image().save_png("res://build/shots/%s.png" % s[0])
+		root.get_texture().get_image().save_png("res://build/shots/%s%s.png" % ["en_" if en else "", s[0]])
 	if s_has_ending(m):
 		pass
 	m.show_ending("rain")
 	for f in 40:
 		await process_frame
-	root.get_texture().get_image().save_png("res://build/shots/ending.png")
+	root.get_texture().get_image().save_png("res://build/shots/%sending.png" % ("en_" if en else ""))
 	m.show_gallery()
 	for f in 8:
 		await process_frame
-	root.get_texture().get_image().save_png("res://build/shots/gallery.png")
+	root.get_texture().get_image().save_png("res://build/shots/%sgallery.png" % ("en_" if en else ""))
 	DirAccess.remove_absolute(ProjectSettings.globalize_path("user://shot_tmp.cfg"))
 	quit()
 
