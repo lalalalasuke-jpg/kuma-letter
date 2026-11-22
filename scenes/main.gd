@@ -255,9 +255,9 @@ func set_bg(a: String) -> void:
 	var name := a.get_slice(" ", 0)
 	bg_rect.texture = load("res://art/bg/%s.jpg" % name)
 	place_label.text = Tr.t(PLACE.get(name, ""))
-	var wet := a.contains("rain")
-	rain.visible = wet
-	bg_rect.modulate = Color(0.62, 0.66, 0.78) if wet else Color.WHITE
+	rain.visible = a.contains("rain")  # rain: 雨を降らせて暗く（外の絵で使う）
+	var dark := a.contains("rain") or a.contains("dark")  # dark: 暗くするだけ（雨の日の店内）
+	bg_rect.modulate = Color(0.62, 0.66, 0.78) if dark else Color.WHITE
 
 
 func set_chars(a: String) -> void:
