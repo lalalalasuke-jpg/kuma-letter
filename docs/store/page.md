@@ -75,17 +75,20 @@ Made together by lalasuke (concept, game design & story ideas) and AI.
 X: @lalakurosoft
 ```
 
-### キャッチコピー・短い説明
+### キャッチコピー・短い説明（PLiCy の欄は100文字まで → 日本語だけ）
 
 ```text
-オリパから出てきた手紙を、持ち主に届けるほっこりアドベンチャー / A cozy adventure to deliver a lost letter found in a card pack
+オリパから出てきた手紙を、持ち主に届けるほっこりアドベンチャー
 ```
 
-### 操作説明（PLiCy の「操作説明」欄）
+```text
+A cozy adventure to deliver a lost letter found in a card pack
+```
+
+### 操作説明（PLiCy の「操作説明」欄、100文字まで）
 
 ```text
-画面をタップ（クリック）すると、お話が進みます。選択肢はボタンをタップ。
-左上（タイトルでは左下）の ♪ で音のオン・オフ、「タイトルへ」でタイトルにもどります。
+タップで話が進み、選択肢はボタンで選びます。♪で音のオン・オフ、「タイトルへ」でもどります。
 ```
 
 ## itch.io の設定メモ
