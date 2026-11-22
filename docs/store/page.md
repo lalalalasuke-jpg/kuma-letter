@@ -103,3 +103,29 @@ A cozy adventure to deliver a lost letter found in a card pack
 
 ## タグ（PLiCy 向け・日本語）
 アドベンチャー, ノベル, マルチエンディング, ほのぼの, 短編, 動物, カードゲーム, スマホ対応, AI
+
+## X の告知文（2026-11-22 作成。画像: cover_ja・2_oripa_ja・3_tanuki_ja・5_park_ja）
+
+日本語（263/280）:
+```text
+新作ゲーム「くま紳士と迷子の手紙」✉️
+
+オリパから出てきたカードに、古い手紙がはさまっていた――。
+聞き込みをして、手紙を持ち主に届けるほっこりアドベンチャー🐻
+
+エンディング5つ＋おまけつき。ブラウザですぐ遊べます！
+▶ https://plicy.net/GamePlay/242342
+
+#フリーゲーム #PLiCy
+```
+
+英語（返信につなげる用、232/280）:
+```text
+New game: The Bear Gentleman and the Lost Letter ✉️
+
+A short, cozy adventure. Deliver a lost letter found in a card pack! 5 endings + a bonus epilogue. Plays in your browser (EN/JP).
+
+▶ https://lalasuke.itch.io/the-bear-gentleman-and-the-lost-letter
+
+#indiegame #itchio
+```
