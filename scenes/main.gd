@@ -20,6 +20,7 @@ const PLACE := {"home": "くまの家", "outside": "カードショップ", "ori
 	"shop": "カードショップ", "register": "カードショップ", "showcase": "カードショップ",
 	"cafe": "喫茶店", "park": "公園", "park_rain": "公園"}
 
+const NO_FLIP := ["fukurou"]  # 左に置いても反転しない立ち絵（正面向き・文字入りの仮の絵）
 static var save_path := SAVE  # テスト用に差し替えられるように
 
 var ops: Array = []          # 台本を1行ずつにしたもの
@@ -265,6 +266,9 @@ func set_chars(a: String) -> void:
 	if a.strip_edges() == "-":
 		return
 	var names := a.split(" ", false)
+	# 2人のときは、くまをいつも右に（モノクルがあるので反転しない）。左の人は反転して右向き＝くまと向かい合う
+	if names.size() == 2 and names[0].begins_with("kuma"):
+		names = PackedStringArray([names[1], names[0]])
 	var xs := [W / 2.0] if names.size() == 1 else [W * 0.28, W * 0.72]
 	for i in names.size():
 		var tex: Texture2D = load("res://art/ch/%s.png" % names[i])
@@ -275,6 +279,7 @@ func set_chars(a: String) -> void:
 		t.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		t.size = Vector2(tex.get_width() * sc, h)
 		t.position = Vector2(xs[i] - t.size.x / 2, BG_H - h - 6)
+		t.flip_h = names.size() == 2 and i == 0 and not names[i] in NO_FLIP
 		t.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		char_layer.add_child(t)
 
